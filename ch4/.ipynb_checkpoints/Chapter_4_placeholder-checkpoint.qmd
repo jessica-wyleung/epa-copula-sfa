@@ -1,0 +1,9 @@
+---
+jupyter: python3
+execute:
+  freeze: true
+---
+
+# Copulas for panel stochastic frontier models 
+
+## 

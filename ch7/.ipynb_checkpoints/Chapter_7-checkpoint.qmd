@@ -1,0 +1,45 @@
+---
+execute:
+  keep-ipynb: true
+jupyter: python3
+---
+
+# Chapter 7: Predicting inefficiency
+
+## Exercise 7.1: JLMS estimator of inefficiency of rice production
+This exercise uses the procedure outlined in Section 7.2 to estimate technical inefficiencies of Indonesian rice farms. The details of the data are provided in Exercise 4.2. The table reports predicted technical inefficiencies in each time period for ten farms, namely those that are at the 0.05,0.15,...,0.95 fractiles of the sample of inefficiencies for $t = 1$. The first two columns report the rank and the quantile of the selected farms. The third and fourth columns contain the sample variation and sample mean over t, respectively, of the inefficiencies, which are reported in columns 5 through 10. The last row of the tables reports column-wise averages over the ten farms.
+
+
+
+```{python}
+# Remove all previous function and variable definitions before the next exercise
+%reset
+```
+
+## Exercise 7.2: The APS estimator of inefficiency of rice production
+This exercise uses the procedure outlined in Section 7.4.2 to estimate technical inefficiencies of Indonesian rice farms. The predictions employ the Gaussian copula to draw $S = 10,000$ observations from the joint distribution of $u$ and $\epsilon$. For the simulated sample, the predictions are based on the Nadaraya-Watson estimator which uses the Gaussian kernel with a common bandwidth parameter h chosen by cross-validation.
+
+The table reports predicted inefficiencies in each time period for ten farms, namely those that are at the 0.05, 0.15, . . . , 0.95 fractiles of the sample of inefficiencies at $t = 1$. The first two columns report the rank and the quantile of the selected farms. The third and fourth columns contain the sample variation and sample mean over $t$, respectively, of the inefficiency estimates, which are reported in columns 5 through 10. The last row of the tables reports column-wise averages over the ten farms. (The results is somewhat different from the original results by Amsler et al. (2014), who used GAUSS and obtained a smaller average $\hat{\sigma}$ compared to JLMS.)
+
+
+
+```{python}
+# Remove all previous function and variable definitions before the next exercise
+%reset
+```
+
+## Exercise 7.3: Improved JLMS estimator for the 72 US utilities
+This exercise applies the predictors from Sections 7.4.2 and 7.6.1 to the US electricity generation dataset comprised of 72 firms over the period 1986-1999. The data file is steamelectric.xlsx. The output variable is net steam electric power in megawatt-hours and the values of the three inputs (fuel, labour and maintenance, and capital) are obtained by dividing respective expenses by relevant input prices; the data are cleaned following Amsler et al. (2021). The price of fuel aggregate is a Tornqvist price index of fuels. The aggregate price of labor and maintenance is a cost-share weighted price, where the price of labor is a company-wide average wage rate and the price of maintenance and other supplies is a price index of electrical supplies from the U.S. Bureau of Labor Statistics. The price of capital is the yield of the firm’s latest issue of long term debt adjusted for appreciation and depreciation. This data has recently been used by Amsler et al. (2021) and Lai and Kumbhakar (2019).
+
+The first table reports the average estimated technical inefficiencies by the year as well as the average of their estimated standard deviations, which can be viewed as measures of the unexplained variation in $u$. (We use a different random seed to Amsler et al. (2023) so our estimates are different from theirs.) Table 7.3 contains three predictors based on the panel model where the model parameters are estimated by MSLE. The JLMS estimator uses only the contemporaneous $\epsilon_{it}$ in the conditioning set. The Nadaraya-Watson [NW] and Local Linear Forest [LLF] estimators use the expanded conditioning set and the APS14 approach to estimating the conditional expectation, described in Section 7.4.2. The second table contains three estimators based on the model with endogeneity where the parameters of the model are estimated by MSLE. For this part, we ignore the panel nature of the dataset (by viewing it as a pooled cross-section, i.e. by assuming independence over t as well as over i) and focus on the presence of the two types of inefficiency. In this case, JLMS is the estimator that does not use the $\omega_{j}’s while NW and LLF include them in the conditioning set using the APS16 approach described in Section 7.6.1.
+
+In the second table the average technical inefficiency score over all firms and years is similar across estimators, regardless of whether or not we condition on the allocative inefficiency terms. Over all years, the average standard deviation of technical inefficiency scores from the Local Linear Forest is considerably smaller than those from the JLMS or Nadaraya-Watson estimators. In Table 7.3, the mean technical inefficiency scores are always larger for all estimators and years in the data. Again, we find that the average technical inefficiency score over all firms and years is similar for all estimators. However, there are noticeable differences in the mean technical inefficiency score of estimators between years, for example in years 86, 87, 91 and 98. Finally, we note that the mean standard deviations for both non-parametric estimators are remarkably smaller than those associated with the JLMS estimator, suggesting that we explain a much larger portion of the unconditional variation in u. The technical inefficiency scores computed from the Local Linear Forest estimator are always associated with the smallest standard deviations.
+
+
+
+
+```{python}
+# Remove all previous function and variable definitions before the next exercise
+%reset
+```
+
